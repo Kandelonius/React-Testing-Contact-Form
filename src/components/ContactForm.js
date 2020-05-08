@@ -49,7 +49,7 @@ const ContactForm = () => {
         <div>
           <label htmlFor="message">Message</label>
           <textarea name="message" ref={register({ required: false })} />
-        </div>
+          </div>
         {data && (
           <pre style={{ textAlign: "left", color: "white" }}>
             {JSON.stringify(data, null, 2)}
