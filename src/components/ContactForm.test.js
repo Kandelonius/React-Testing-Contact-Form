@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, act } from "@testing-library/react";
 import ContactForm from "./ContactForm";
 
 test("renders contact form without crashing", () => {
@@ -66,6 +66,24 @@ test("button is present and can be used", () => {
     const { getByTestId } = render(<ContactForm />);
 
     const button = getByTestId(/submit-button/i);
+    act(() => {
+        fireEvent.click(button);
+    });
 
     expect(button).toBeInTheDocument();
 });
+// test("valid information can be entered into the fields and the submit button can be pressed.", () => {
+//     const { getByPlaceholderText, getByTestId, getByLabelText, getByText } = render(<ContactForm />);
+//     // const firstNameInput = getByPlaceholderText(/Edd/i);
+//     const lastNameInput = getByPlaceholderText(/Burke/i);
+
+//     fireEvent.change(getByPlaceholderText(/Edd/i), { target: { value: "Jojojo" } });
+//     fireEvent.change(getByPlaceholderText(/Burke/i), { target: { value: "Potato" } });
+//     fireEvent.change(getByLabelText(/email/i), { target: { value: "a@b.c" } });
+//     act(() => {
+//         fireEvent.click(getByTestId(/submit-button/i));
+//     });
+//     setTimeout(1000, () => {});
+
+//     expect(getByText(/Jojojo/i)).toBeInTheDocument();
+// });
